@@ -20,12 +20,142 @@
 }
 .banner__container a i{
     margin-right: .5rem;
+}
+
+/* ****************************** */
+/* ZONA CARDS Y FORMULARIO */
+/* ****************************** */
+.services{
+    display: flex;
+    padding: 2rem;
+}
+.services__cards{
+    flex: 7;
+}
+.services__register{
+    flex: 3;
+}
+
+/* ****************************** */
+/* ZONA CARDS */
+/* ****************************** */
+.services__cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+}
+.services__card{
+    border: 1px solid var(--borde);
+    border-radius: 1rem;
+}
+.card__title{
+    font-size: 1.6rem;
+    font-size: 400;
+    padding-top: 2rem;    
+    padding-left: 2rem;    
+}
+.card__text{
+    padding: 2rem;    
+}
+.card__footer{
+    display:flex;
+    gap: 2rem;
+    margin-top: 1rem;
+    padding-left: 2rem;
+    background-color: var(--borde);
+    border-radius: 0 0 .5rem .5rem;
+}
+.card__footer p{
+    padding:1rem;
+    cursor:pointer;
+    color: var(--azul)
+}
+.card__footer p:hover{
+    text-decoration: underline;
+}
+
+/* ****************************** */
+/* ZONA REGISTER */
+/* ****************************** */
+.services__register{
+    padding-left: 2rem;   
+}
+.register__card{
+    border: 1px solid var(--borde);
+    border-radius: 1rem;
+}
+.register__title{
+    padding-top: 2rem;
+    padding-left: 2rem;
+    font-size: 1.6rem;
+}
+.register__form{
+    padding-top: 2rem;
+}
+.register__body{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-bottom: 2rem;
+}
+.register__group{
+    margin-bottom: 1rem;
+}
+.register__group label p{
+    font-size: 1.4rem;
+}
+.register__group label input{
+    padding: 1rem;
+    width: 100%;
+    border: 1px solid var(--borde);
+    border-radius: 1rem;
 
 }
+
+.register__footer{
+    border-radius: 0 0 .5rem .5rem;
+    background-color: var(--borde);
+    padding: 1rem 2rem;
+}
+.register__footer button{
+    padding: .5rem 1rem;
+    border: 1px solid var(--rojo);
+    border-radius: 1rem;
+    color: var(--rojo);
+    cursor: pointer;
+}
+.register__footer button:hover{
+    background-color:var(--rojo);
+    color: #eee;
+}
+
 
 @media screen and (max-width: 768px){
     .banner__container{
         justify-content:center;
         text-align: center;
     }    
+
+    .services{
+        display: flex;
+        flex-direction: column-reverse;
+        /* padding: 2rem; */
+    }
+    .services__register{
+        padding-left: 0;
+        margin-bottom: 2rem;   
+    }
+}
+
+@media screen and (max-width: 640px){
+    .banner__container{
+        padding-left: 4rem;
+        overflow-x: scroll;
+    }
+    .banner__container a{
+        width: 15rem;
+    }
+    .services__cards{
+        grid-template-columns: 1;
+    }
+    
 }

@@ -3,10 +3,10 @@
 :root {
     /* Colores oficiales */
     --texto: #414141;
-    --rojo: #cf141b;
+    --rojo: #b92b27;
     --azul: #0070b8;
     --fondo: #F6F8FA;
-    --borde: #bababa;
+    --borde: #E4E5E6;
     --celeste: #4568DC;
     --fuxia: #B06AB3;
 
@@ -25,3 +25,34 @@ html {
     font-family: 'Roboto', sans-serif;
 }
 
+/* FALLBACKS */
+.fallback__container{
+    display: flex;
+    justify-content: center;
+  }
+  .fallback__cards{
+    width: 80%;
+    height: 80vh;
+    margin: 2rem auto;
+  }
+  
+  .spinnerCircular {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border-left-color: #fff;
+  
+    animation: spinCircular 1s ease infinite;
+  }
+  
+  @keyframes spinCircular {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  

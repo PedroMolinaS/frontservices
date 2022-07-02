@@ -89,6 +89,13 @@
     padding-left: 2rem;
     font-size: 1.6rem;
 }
+.register__iniciar button{
+    margin: 2rem;
+    padding: .5rem 1rem;
+    color: var(--rojo);
+    border: 1px solid var(--rojo);
+    border-radius: 1rem;
+}
 .register__form{
     padding-top: 2rem;
 }

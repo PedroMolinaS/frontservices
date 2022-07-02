@@ -7,6 +7,8 @@
     --azul: #0070b8;
     --fondo: #F6F8FA;
     --borde: #bababa;
+    --celeste: #4568DC;
+    --fuxia: #B06AB3;
 
 }
 
@@ -14,9 +16,12 @@
     margin:0;
     padding: 0;
     box-sizing: border-box;
+    list-style-type: none ;
+    text-decoration: none ;
 }
 
 html {
     font-size: 10px;
     font-family: 'Roboto', sans-serif;
 }
+

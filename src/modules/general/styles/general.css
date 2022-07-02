@@ -1,0 +1,31 @@
+.active{
+    font-weight: 900;
+    text-decoration: underline;
+}
+.banner__container{
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+    padding: 2rem;
+    font-size: 2rem;
+    background: linear-gradient(to right,#0052D4, #4364F7, #6FB1FC);
+}
+.banner__container a{
+    color: #ddd;
+}
+.banner__container a:hover{
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.banner__container a i{
+    margin-right: .5rem;
+
+}
+
+@media screen and (max-width: 768px){
+    .banner__container{
+        justify-content:center;
+        text-align: center;
+    }    
+}

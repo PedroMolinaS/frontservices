@@ -122,7 +122,7 @@ const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
                                 onChange={handleFormChange}
                             >
                                 <option value='Seleccionar'>Seleccionar</option>
-                                {globalCategorias.filter(c => c !== 'Todos').map(cat => {
+                                {globalCategorias.filter(c => c !== 'TODOS').map(cat => {
                                     return (
                                         <option key={cat} value={cat}
                                         >{cat}</option>

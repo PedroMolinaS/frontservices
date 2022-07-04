@@ -1,11 +1,11 @@
 import React from 'react'
-import GeneralCards from '../components/GeneralCards'
-import GeneralRegister from '../components/GeneralRegister'
+import ServicesCards from '../../services/cards/components/ServicesCards'
+import GeneralRegister from '../../services/management/screens/GeneralRegister'
 
 const GeneralScreen = () => {
   return (
     <div className='services'>
-      <GeneralCards />
+      <ServicesCards />
       <GeneralRegister />
     </div>
 

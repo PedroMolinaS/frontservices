@@ -3,7 +3,7 @@ import ContentLoader from 'react-content-loader'
 
 const FallbackCards = (props) => {
 
-    const { rows = 4, columns = 3, coverHeight = 305, coverWidth = 385, padding = 55, speed = 1 } = props;
+    const { rows = 4, columns = 3, coverHeight = 205, coverWidth = 255, padding = 25, speed = 1 } = props;
     const coverHeightWithPadding = coverHeight + padding
     const coverWidthWithPadding = coverWidth + padding
     const initial = 35

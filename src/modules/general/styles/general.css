@@ -1,6 +1,7 @@
 .active{
     font-weight: 900;
-    text-decoration: underline;
+    color: #fff;
+    /* text-decoration: underline; */
 }
 .banner__container{
     display: flex;
@@ -10,16 +11,27 @@
     font-size: 2rem;
     background: linear-gradient(to right,#0052D4, #4364F7, #6FB1FC);
 }
-.banner__container a{
+.banner__container div{
     color: #ddd;
+    position: relative;
+    margin-right: 2rem;
 }
-.banner__container a:hover{
+.banner__container div:hover{
     color: #fff;
     text-decoration: underline;
     cursor: pointer;
 }
-.banner__container a i{
+.banner__container div i{
     margin-right: .5rem;
+}
+.banner__container div .banner_count{
+    font-size: 1.4rem;
+    margin-left: .5rem;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    padding: .1rem .4rem;
+    position: absolute;
+    
 }
 
 /* ****************************** */
@@ -45,25 +57,30 @@
     gap: 2rem;
 }
 .services__card{
-    border: 1px solid var(--borde);
+    /* border: 1px solid var(--borde); */
     border-radius: 1rem;
 }
 .card__title{
+    border: 1px solid var(--borde);
+    border-radius: 1rem 1rem 0 0;
     font-size: 1.6rem;
     font-size: 400;
     padding-top: 2rem;    
     padding-left: 2rem;    
 }
 .card__text{
-    padding: 2rem;    
+    border-right: 1px solid var(--borde);
+    border-left: 1px solid var(--borde);
+    padding: 2rem; 
+    min-height: 13rem;   
 }
 .card__footer{
     display:flex;
     gap: 2rem;
-    margin-top: 1rem;
+    /* margin-top: 1rem; */
     padding-left: 2rem;
     background-color: var(--borde);
-    border-radius: 0 0 .5rem .5rem;
+    border-radius: 0 0 1rem 1rem;
 }
 .card__footer p{
     padding:1rem;
@@ -115,7 +132,12 @@
     width: 100%;
     border: 1px solid var(--borde);
     border-radius: 1rem;
-
+}
+.register__group label select{
+    padding: 1rem;
+    width: 100%;
+    border: 1px solid var(--borde);
+    border-radius: 1rem;
 }
 
 .register__footer{

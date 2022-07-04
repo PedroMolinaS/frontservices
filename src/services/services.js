@@ -1,14 +1,8 @@
 import { URL_BACKEND } from "../enviroments/enviroment"
 
-export const getServices = async (token) => {
+export const getAllServices = async () => {
     try {
-        const response = await fetch(`${URL_BACKEND}/api/services`,{
-            method: 'GET',
-            headers: { 
-                'Content-Type': 'application/json',
-                'authorization': token
-            }
-        })
+        const response = await fetch(`${URL_BACKEND}/api/services`)
         const json = await response.json()
         return json
     } catch (error) {
@@ -17,7 +11,20 @@ export const getServices = async (token) => {
     }
 }
 
+export const getAServicesFiltered = async (category) => {
+    try {
+        const response = await fetch(`${URL_BACKEND}/api/services/${category}`)
+        const json = await response.json()
+        return json
+    } catch (error) {
+        console.error(error)
+        return error
+    }
+}
+
+
 export const postService = async (token, data) => {
+
     try {
         const response = await fetch(`${URL_BACKEND}/api/services`,{
             method: 'POST',
@@ -27,8 +34,12 @@ export const postService = async (token, data) => {
             },
             body: JSON.stringify(data)
         })
+        if(response.status>=300){
+            return [{}, response.status]
+        }
         const json = await response.json()
-        return json
+        return [json, response.status]
+
     } catch (error) {
         console.error(error)
         return error

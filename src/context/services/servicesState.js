@@ -9,9 +9,10 @@ const ServicesState = (props) => {
         globalServices: [],
         globalServicesFiltered: [],
         globalServiceTotal: {},
-        globalServiceSelected: 'Todos',
+        globalServiceSelected: 'TODOS',
         globalLoading: false,
-        globalCategorias: ['Todos','Autos', 'Salud', 'Hogar']
+        globalAction: 'Crear',
+        globalCategorias: ['TODOS','AUTOS', 'SALUD', 'HOGAR']
     })
 
     // *************************************
@@ -39,6 +40,13 @@ const ServicesState = (props) => {
         })
     }
 
+    const globalUpdateAction = (action) => {
+        dispatch({
+            action: 'UPDATE_ACTION',
+            data: action
+        })
+    }
+
 
     return (
         <ServicesContext.Provider value={{
@@ -48,9 +56,11 @@ const ServicesState = (props) => {
             globalServiceTotal: state.globalServiceTotal,
             globalLoading: state.globalLoading,
             globalCategorias: state.globalCategorias,
+            globalAction: state.globalAction,
             globalActualizarServicios,
             globalFiltrarServicios,
-            globalLoadingServices
+            globalLoadingServices,
+            globalUpdateAction
         }}>
             {props.children}
         </ServicesContext.Provider>

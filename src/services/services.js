@@ -30,7 +30,7 @@ export const postService = async (token, data) => {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
-                'authorization': token
+                'Authorization': token
             },
             body: JSON.stringify(data)
         })
@@ -52,12 +52,17 @@ export const putService = async (token,id, data) => {
             method: 'PUT',
             headers: { 
                 'Content-Type': 'application/json',
-                'authorization': token
+                'Authorization': token
             },
             body: JSON.stringify(data)
         })
+
+        if(response.status>=300){
+            return [{}, response.status]
+        }
         const json = await response.json()
-        return json
+        return [json, response.status]
+
     } catch (error) {
         console.error(error)
         return error
@@ -65,12 +70,13 @@ export const putService = async (token,id, data) => {
 }
 
 export const deleteService = async (token,id) => {
+
     try {
         const response = await fetch(`${URL_BACKEND}/api/services/${id}`,{
-            method: 'PUT',
+            method: 'DELETE',
             headers: { 
                 'Content-Type': 'application/json',
-                'authorization': token
+                'Authorization': token
             }
         })
         const json = await response.json()

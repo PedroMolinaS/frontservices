@@ -1,32 +1,32 @@
 import React, { useContext, useState } from 'react'
 import AuthContext from '../../../../context/auth/authContext'
 import ServicesContext from '../../../../context/services/servicesContext'
-import { getAllServices, postService } from '../../../../services/services'
+import { getAllServices, postService, putService } from '../../../../services/services'
 import Swal from 'sweetalert2'
 import SpinnerCuadrado from '../../../helpers/SpinnerCuadrado'
 
-const GeneralRegisterForm = () => {
+const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
 
     const { globalToken } = useContext(AuthContext)
-    const { globalCategorias, globalActualizarServicios } = useContext(ServicesContext)
+    const { globalCategorias, globalActualizarServicios, globalAction, globalUpdateAction } = useContext(ServicesContext)
     const [cargando, setCargando] = useState(false)
 
-    const [form, setForm] = useState({
-        category: '',
-        name: '',
-        description: ''
-    })
-    const handleChange = (e) => {
-        setForm({
-            ...form,
-            [e.target.name]: e.target.value
-        })
-    }
+    // const [form, setForm] = useState({
+    //     category: '',
+    //     name: '',
+    //     description: ''
+    // })
+    // const handleFormChange = (e) => {
+    //     setForm({
+    //         ...form,
+    //         [e.target.name]: e.target.value
+    //     })
+    // }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
 
-        // Validar form:
+        // Validar datos completos del form:
         const { category, name, description } = form
         if (category !== '' && name !== '' && description !== '') {
             let data = {
@@ -36,35 +36,62 @@ const GeneralRegisterForm = () => {
             }
             setCargando(true)
             try {
-                postService(globalToken, data).then(([rpta, status]) => {
-                    setCargando(false)
+                // Valido si va crear o actualizar:
+                if (globalAction === 'Editar') {
+                    putService(globalToken, form.idservice, data).then(([rpta, status]) => {
+                        setCargando(false)
 
-                    if (status<300 && rpta && rpta?.ok) {
+                        if (status < 300 && rpta && rpta?.ok) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Registro actualizado con éxtio',
+                                timer: 2000,
+                                timerProgressBar: true,
+                            })
+                            // Luego de crar debo actualizo los servicios:
+                            getAllServices().then(serv => {
+                                globalActualizarServicios(serv)
+                                resetForm()
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error al actualizar',
+                                timer: 2000,
+                                timerProgressBar: true,
+                            })
+                        }
+                    })
+                } else {
+                    // Creando:
+                    postService(globalToken, data).then(([rpta, status]) => {
+                        setCargando(false)
 
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Registro guardo con éxtio',
-                            timer: 2000,
-                            timerProgressBar: true,
-                        })
-                        // Actualizo los servicios:
-                        getAllServices().then(serv => {
-                            globalActualizarServicios(serv)
-                            resetForm()
-                        })
-                    }else{
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error al guardar',
-                            timer: 2000,
-                            timerProgressBar: true,
-                        })
-                    }
-                })
+                        if (status < 300 && rpta && rpta?.ok) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Registro guardo con éxtio',
+                                timer: 2000,
+                                timerProgressBar: true,
+                            })
+                            // Luego de crar debo actualizo los servicios:
+                            getAllServices().then(serv => {
+                                globalActualizarServicios(serv)
+                                resetForm()
+                            })
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error al guardar',
+                                timer: 2000,
+                                timerProgressBar: true,
+                            })
+                        }
+                    })
+                }
             } catch (error) {
                 console.log(error)
                 setCargando(false)
-
             }
         }
 
@@ -76,7 +103,7 @@ const GeneralRegisterForm = () => {
             name: '',
             description: '',
         })
-        // globalCerrarSesion(globalToken)
+        globalUpdateAction('Crear')
     }
 
     return (
@@ -92,7 +119,7 @@ const GeneralRegisterForm = () => {
                             <select
                                 name="category"
                                 value={form.category}
-                                onChange={handleChange}
+                                onChange={handleFormChange}
                             >
                                 <option value='Seleccionar'>Seleccionar</option>
                                 {globalCategorias.filter(c => c !== 'Todos').map(cat => {
@@ -111,7 +138,7 @@ const GeneralRegisterForm = () => {
                                 type="text"
                                 placeholder="Nombre"
                                 name='name'
-                                onChange={handleChange}
+                                onChange={handleFormChange}
                                 value={form.name}
                             />
                         </label>
@@ -123,7 +150,7 @@ const GeneralRegisterForm = () => {
                                 type="text"
                                 placeholder="Descripción"
                                 name='description'
-                                onChange={handleChange}
+                                onChange={handleFormChange}
                                 value={form.description}
                             />
                         </label>

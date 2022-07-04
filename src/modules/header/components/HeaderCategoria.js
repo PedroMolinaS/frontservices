@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import ServicesContext from '../../../context/services/servicesContext'
 
 const HeaderCategoria = ({ categoria }) => {
@@ -9,7 +9,7 @@ const HeaderCategoria = ({ categoria }) => {
 
         // Solo en el filtro principal asigno el arreglo original sin filtro
         globalLoadingServices(true)
-        if (categoria === 'Todos') {
+        if (categoria === 'TODOS') {
             globalFiltrarServicios({
                 filtrado: globalServices, 
                 categoria})

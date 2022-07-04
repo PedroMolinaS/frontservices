@@ -24,6 +24,11 @@ const ServicesReducer = (state, payload) => {
                 ...state,
                 globalLoading: payload.data
             }
+        case 'UPDATE_ACTION':
+            return {
+                ...state,
+                globalAction: payload.data
+            }
         default:
             return state
     }

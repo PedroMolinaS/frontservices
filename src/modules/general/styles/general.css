@@ -3,13 +3,18 @@
     color: #fff;
     /* text-decoration: underline; */
 }
+
+.banner__principal{
+    background: linear-gradient(to right,#0052D4, #4364F7, #6FB1FC);
+    display: flex;
+    justify-content: space-between;
+}
 .banner__container{
     display: flex;
     justify-content: flex-start;
     gap: 3rem;
     padding: 2rem;
     font-size: 2rem;
-    background: linear-gradient(to right,#0052D4, #4364F7, #6FB1FC);
 }
 .banner__container div{
     color: #ddd;
@@ -30,8 +35,23 @@
     border-radius: 50%;
     border: 1px solid #fff;
     padding: .1rem .4rem;
-    position: absolute;
-    
+    position: absolute;   
+}
+
+.banner__user{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 3rem;
+    padding: 2rem;
+    font-size: 1.6rem;
+    color: #eee;
+}
+.cerrarsesion{
+    background-color: var(--rojo);
+    padding: .5rem 1rem;
+    border-radius: 2rem;
+    cursor: pointer;
 }
 
 /* ****************************** */
@@ -105,6 +125,12 @@
     padding-top: 2rem;
     padding-left: 2rem;
     font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+}
+
+.register__title img{
+    margin-right: 2rem;
 }
 .register__iniciar button{
     margin: 2rem;
@@ -167,7 +193,7 @@
     .services{
         display: flex;
         flex-direction: column-reverse;
-        /* padding: 2rem; */
+
     }
     .services__register{
         padding-left: 0;
@@ -176,8 +202,13 @@
 }
 
 @media screen and (max-width: 640px){
+
+    .banner__principal{
+        flex-direction: column-reverse;
+    }
+
     .banner__container{
-        padding-left: 4rem;
+        padding-left: 10rem;
         overflow-x: scroll;
     }
     .banner__container a{

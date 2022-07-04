@@ -11,6 +11,11 @@ const ServicesState = (props) => {
         globalServiceTotal: {},
         globalServiceSelected: 'TODOS',
         globalLoading: false,
+        globalForm: {
+            category: '',
+            name: '',
+            description: '',
+        },
         globalAction: 'Crear',
         globalCategorias: ['TODOS','AUTOS', 'SALUD', 'HOGAR']
     })

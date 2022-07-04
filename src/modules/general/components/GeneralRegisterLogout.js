@@ -1,11 +1,19 @@
 import React, { useContext } from 'react'
 import AuthContext from '../../../context/auth/authContext'
+import { postLogin } from '../../../services/auth'
 
 const GeneralRegisterLogout = () => {
 
     const {globalIniciarSesion} = useContext(AuthContext)
     const loguea = () => {
-        globalIniciarSesion()
+
+        postLogin({
+            correo: 'test@test.com',
+            password: '123456'
+        }).then(res => {
+            console.log({res})
+            globalIniciarSesion()
+        })
     }
 
     return (

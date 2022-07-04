@@ -51,7 +51,13 @@ const ServicesState = (props) => {
             data: action
         })
     }
-
+    
+    const globalUpdateForm = (form) => {
+        dispatch({
+            action: 'UPDATE_FORM',
+            data: form
+        })        
+    }
 
     return (
         <ServicesContext.Provider value={{
@@ -62,10 +68,12 @@ const ServicesState = (props) => {
             globalLoading: state.globalLoading,
             globalCategorias: state.globalCategorias,
             globalAction: state.globalAction,
+            globalForm: state.globalForm,
             globalActualizarServicios,
             globalFiltrarServicios,
             globalLoadingServices,
-            globalUpdateAction
+            globalUpdateAction,
+            globalUpdateForm
         }}>
             {props.children}
         </ServicesContext.Provider>

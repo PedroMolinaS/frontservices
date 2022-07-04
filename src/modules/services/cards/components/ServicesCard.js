@@ -4,16 +4,15 @@ import ServicesContext from '../../../../context/services/servicesContext'
 import Swal from 'sweetalert2'
 import { deleteService, getAllServices } from '../../../../services/services'
 
-const ServicesCard = ({ card, setForm }) => {
+const ServicesCard = ({ card }) => {
 
     const { globalAuthenticate, globalToken } = useContext(AuthContext)
-    const { globalUpdateAction, globalActualizarServicios } = useContext(ServicesContext)
+    const { globalUpdateForm, globalUpdateAction, globalActualizarServicios } = useContext(ServicesContext)
     const [cargando, setCargando] = useState(false)
 
     const editar = () => {
         globalUpdateAction('Editar')
-        console.log({ card })
-        setForm({
+        globalUpdateForm({
             category: card.grupo,
             name: card.nombre,
             description: card.descripcion,
@@ -29,7 +28,6 @@ const ServicesCard = ({ card, setForm }) => {
             cancelButtonText: 'Cancelar',
             confirmButtonText: 'Confirmar'
         }).then(rpta => {
-            console.log(rpta)
             setCargando(true)
             if (rpta.isConfirmed) {
                 // Eliminar registro

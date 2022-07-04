@@ -5,29 +5,25 @@ import { getAllServices, postService, putService } from '../../../../services/se
 import Swal from 'sweetalert2'
 import SpinnerCuadrado from '../../../helpers/SpinnerCuadrado'
 
-const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
+const GeneralRegisterForm = () => {
 
     const { globalToken } = useContext(AuthContext)
-    const { globalCategorias, globalActualizarServicios, globalAction, globalUpdateAction } = useContext(ServicesContext)
+    const { globalCategorias, globalActualizarServicios, globalAction, globalUpdateAction, globalForm, globalUpdateForm } = useContext(ServicesContext)
     const [cargando, setCargando] = useState(false)
+    
 
-    // const [form, setForm] = useState({
-    //     category: '',
-    //     name: '',
-    //     description: ''
-    // })
-    // const handleFormChange = (e) => {
-    //     setForm({
-    //         ...form,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
+    const handleChange = (e) => {
+        globalUpdateForm({
+            ...globalForm,
+            [e.target.name]: e.target.value
+        })
+    }
 
     const handleSubmitForm = (e) => {
         e.preventDefault();
 
         // Validar datos completos del form:
-        const { category, name, description } = form
+        const { category, name, description } = globalForm
         if (category !== '' && name !== '' && description !== '') {
             let data = {
                 grupo: category.toUpperCase(),
@@ -38,7 +34,7 @@ const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
             try {
                 // Valido si va crear o actualizar:
                 if (globalAction === 'Editar') {
-                    putService(globalToken, form.idservice, data).then(([rpta, status]) => {
+                    putService(globalToken, globalForm.idservice, data).then(([rpta, status]) => {
                         setCargando(false)
 
                         if (status < 300 && rpta && rpta?.ok) {
@@ -98,11 +94,6 @@ const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
     }
 
     const resetForm = () => {
-        setForm({
-            category: '',
-            name: '',
-            description: '',
-        })
         globalUpdateAction('Crear')
     }
 
@@ -118,8 +109,8 @@ const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
                             <p> Categoria:</p>
                             <select
                                 name="category"
-                                value={form.category}
-                                onChange={handleFormChange}
+                                value={globalForm.category}
+                                onChange={handleChange}
                             >
                                 <option value='Seleccionar'>Seleccionar</option>
                                 {globalCategorias.filter(c => c !== 'TODOS').map(cat => {
@@ -138,8 +129,8 @@ const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
                                 type="text"
                                 placeholder="Nombre"
                                 name='name'
-                                onChange={handleFormChange}
-                                value={form.name}
+                                onChange={handleChange}
+                                value={globalForm.name}
                             />
                         </label>
                     </div>
@@ -150,8 +141,8 @@ const GeneralRegisterForm = ({ handleFormChange, form, setForm }) => {
                                 type="text"
                                 placeholder="Descripción"
                                 name='description'
-                                onChange={handleFormChange}
-                                value={form.description}
+                                onChange={handleChange}
+                                value={globalForm.description}
                             />
                         </label>
                     </div>

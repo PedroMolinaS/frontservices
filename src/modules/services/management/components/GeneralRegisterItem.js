@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import ServicesContext from '../../../../context/services/servicesContext'
 import GeneralRegisterForm from './GeneralRegisterForm'
 
-const GeneralRegisterItem = ({ handleFormChange, form, setForm }) => {
+const GeneralRegisterItem = () => {
 
     const { globalAction } = useContext(ServicesContext)
 
@@ -12,7 +12,7 @@ const GeneralRegisterItem = ({ handleFormChange, form, setForm }) => {
                 <img src="/assets/img/services_icon.png" alt="logo" />
                 {globalAction} Servicio
             </div>
-            <GeneralRegisterForm form={form} setForm={setForm} handleFormChange={handleFormChange} />
+            <GeneralRegisterForm />
         </>
     )
 }

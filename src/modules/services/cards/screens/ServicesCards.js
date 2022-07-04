@@ -4,7 +4,7 @@ import { getAllServices } from '../../../../services/services'
 import FallbackCards from '../../../helpers/FallbackCards'
 import ServicesCard from '../components/ServicesCard'
 
-const ServicesCards = ({setForm}) => {
+const ServicesCards = () => {
 
     const { globalServicesFiltered, globalActualizarServicios } = useContext(ServicesContext)
 
@@ -27,7 +27,6 @@ const ServicesCards = ({setForm}) => {
                             <ServicesCard 
                                 key={card.idservicio} 
                                 card={card} 
-                                setForm={setForm}
                             />
                         )
                     }))

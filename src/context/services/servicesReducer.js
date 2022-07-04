@@ -27,7 +27,17 @@ const ServicesReducer = (state, payload) => {
         case 'UPDATE_ACTION':
             return {
                 ...state,
-                globalAction: payload.data
+                globalAction: payload.data,
+                globalForm: {
+                    category: '',
+                    name: '',
+                    description: '',
+                }
+            }
+        case 'UPDATE_FORM':
+            return {
+                ...state,
+                globalForm: payload.data
             }
         default:
             return state

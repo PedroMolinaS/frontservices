@@ -2,6 +2,9 @@
 
 PROYECTO DE SERVICIOS
 
+![Web_desktop](https://user-images.githubusercontent.com/64816333/177228008-0e97ff94-60cf-4b18-abc7-9bc11fe90139.png)
+![web_mobile](https://user-images.githubusercontent.com/64816333/177228015-0cdec166-b7c2-4c52-a70f-19d822c7f3c8.png)
+
 # Para instalar las dependencias utilizar:
 ### `npm install --force`
 

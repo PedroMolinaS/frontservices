@@ -2,7 +2,7 @@ import React from 'react'
 
 const AuthScreen = () => {
   return (
-    <div>AuthScreen</div>
+    <div>Servicio de login Pendiente</div>
   )
 }
 

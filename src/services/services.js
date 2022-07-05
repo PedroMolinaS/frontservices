@@ -7,7 +7,7 @@ export const getAllServices = async () => {
         return json
     } catch (error) {
         console.error(error)
-        return error
+        throw error
     }
 }
 
@@ -18,7 +18,7 @@ export const getAServicesFiltered = async (category) => {
         return json
     } catch (error) {
         console.error(error)
-        return error
+        throw error
     }
 }
 
@@ -34,15 +34,12 @@ export const postService = async (token, data) => {
             },
             body: JSON.stringify(data)
         })
-        if(response.status>=300){
-            return [{}, response.status]
-        }
         const json = await response.json()
-        return [json, response.status]
+        return json
 
     } catch (error) {
         console.error(error)
-        return error
+        throw error
     }
 }
 
@@ -57,15 +54,12 @@ export const putService = async (token,id, data) => {
             body: JSON.stringify(data)
         })
 
-        if(response.status>=300){
-            return [{}, response.status]
-        }
         const json = await response.json()
-        return [json, response.status]
+        return json
 
     } catch (error) {
         console.error(error)
-        return error
+        throw error
     }
 }
 
@@ -83,7 +77,7 @@ export const deleteService = async (token,id) => {
         return json
     } catch (error) {
         console.error(error)
-        return error
+        throw error
     }
 }
 

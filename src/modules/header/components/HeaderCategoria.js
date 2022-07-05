@@ -16,6 +16,7 @@ const HeaderCategoria = ({ categoria }) => {
             return
         }
 
+        // En caso haga click en una seccion, filtro los datos y actualizo el arreglo seleccionado
         const filtrado = globalServices.filter(s => s.grupo === categoria.toUpperCase())
         globalFiltrarServicios({filtrado, categoria})
     }
@@ -24,10 +25,7 @@ const HeaderCategoria = ({ categoria }) => {
         <div
             className={`${globalServiceSelected===categoria ? 'active' : ''}`}
             onClick={filtrarServicios}
-        >
-            {/* <i className="fa-solid fa-magnifying-glass"></i> */}
-            {categoria}
-            {/* <span className='banner_count'></span> */}
+        >{categoria}
         </div>
     )
 }

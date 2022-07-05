@@ -6,27 +6,28 @@ import Swal from 'sweetalert2'
 
 const GeneralRegisterLogout = () => {
 
-    const {globalIniciarSesion} = useContext(AuthContext)
+    const { globalIniciarSesion } = useContext(AuthContext)
     const [cargando, setCargando] = useState(false)
 
     const loguea = () => {
         setCargando(true)
-        try {
-            postLogin({
-                correo: 'test@test.com',
-                password: '123456'
-            }).then(res => {
-                setCargando(false)
-                console.log({res})
-                globalIniciarSesion(res.token, res.usuario)
-                Swal.fire({
-                    icon: 'success',
-                    title: `Bienvenido ${res.usuario.nombre}`,
-                    timer: 2500,
-                    timerProgressBar: true,
-                })
+        // **********************************************
+        // USUARIO TEST : PARA LOGIN INMEDIATO
+        // **********************************************
+
+        postLogin({
+            correo: 'test@test.com',
+            password: '123456'
+        }).then(res => {
+            setCargando(false)
+            globalIniciarSesion(res.token, res.usuario)
+            Swal.fire({
+                icon: 'success',
+                title: `Bienvenido ${res.usuario.nombre}`,
+                timer: 2500,
+                timerProgressBar: true,
             })
-        } catch (error) {            
+        }).catch(err => {
             setCargando(false)
             Swal.fire({
                 icon: 'error',
@@ -34,7 +35,7 @@ const GeneralRegisterLogout = () => {
                 timer: 2500,
                 timerProgressBar: true,
             })
-        }
+        })
     }
 
     return (

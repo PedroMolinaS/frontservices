@@ -9,6 +9,8 @@ const HeaderScreen = () => {
   const { globalUser, globalCerrarSesion, globalAuthenticate } = useContext(AuthContext)
   const { globalCategorias } = useContext(ServicesContext)
 
+  // decodeURI: Para formatear tíldes en caso el backend no lo envie en UFT8
+
   return (
     <div className='banner__principal'>
       <div className='banner__container'>
@@ -20,10 +22,15 @@ const HeaderScreen = () => {
           })
         }
       </div>
+
+      {/* **************************** */}
+      {/* SECCION DE SESION DEL USUARIO */}
+      {/* **************************** */}
+
       {
         globalAuthenticate &&
         <div className='banner__user'>
-          <div>¡Hola: {globalUser?.useName}</div>
+          <div>¡Hola: {decodeURI(globalUser?.useName)}</div>
           <div className='cerrarsesion' onClick={globalCerrarSesion}>Cerrar Sesión</div>
         </div>
       }

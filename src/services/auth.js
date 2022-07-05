@@ -13,7 +13,7 @@ export const postLogin = async (data) => {
         return json
     } catch (error) {
         console.error(error)
-        return error
+        throw error
     }
 }
 
@@ -30,6 +30,6 @@ export const getUser = async (token) => {
         return json
     } catch (error) {
         console.error(error)
-        return error
+        throw error
     }
 }

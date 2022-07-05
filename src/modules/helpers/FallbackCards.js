@@ -3,6 +3,10 @@ import ContentLoader from 'react-content-loader'
 
 const FallbackCards = (props) => {
 
+    // *******************************************************************
+    //  SECCION DE FALLBACK, Se utilizó la libreria REACT-CONTENT-LOADER
+    // *******************************************************************
+
     const { rows = 4, columns = 3, coverHeight = 205, coverWidth = 255, padding = 25, speed = 1 } = props;
     const coverHeightWithPadding = coverHeight + padding
     const coverWidthWithPadding = coverWidth + padding
